@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications | MAKHLOUFI MAHDI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #7209b7;
+            --text-color: #2b2d42;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1a1a2e;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled nav {
+            padding: 10px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            -webkit-text-fill-color: initial;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Certifications Section */
+        #certifications {
+            background-color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #certifications::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.05;
+            top: -250px;
+            right: -250px;
+            z-index: 0;
+        }
+
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certification-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .certification-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certification-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover .certification-image::after {
+            opacity: 0.2;
+        }
+
+        .certification-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover .certification-image img {
+            transform: scale(1.1);
+        }
+
+        .certification-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certification-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .certification-issuer {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .certification-issuer i {
+            margin-right: 8px;
+        }
+
+        .certification-desc {
+            color: #4b5563;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .certification-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .certification-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .certification-link:hover {
+            color: var(--accent-color);
+        }
+
+        .certification-link:hover i {
+            transform: translateX(8px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .certifications-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                top: 0;
+                left: -100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                color: white;
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .certification-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">MAHDI<span>.</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="certifications.html" class="active">Certifications</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Certifications</h2>
+                <p>Professional credentials that validate my expertise in data analysis</p>
+            </div>
+            <div class="certifications-container">
+                <!-- Certification 1 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/looker.jpeg" alt="Analyzing and Visualizing Data in Looker">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Analyzing and Visualizing Data in Looker</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            Google Cloud
+                        </div>
+                        <p class="certification-desc">Certification in data analysis and visualization using Looker, Google's business intelligence platform.</p>
+                        <a href="images/looker.jpeg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/data.jpeg" alt="Career Essentials in Data Analysis">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Career Essentials in Data Analysis</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            Microsoft and LinkedIn
+                        </div>
+                        <p class="certification-desc">Comprehensive program covering essential data analysis skills and tools for professional data analysts.</p>
+                        <a href="images/data.jpeg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/excel.jpg" alt="Advanced Microsoft Excel">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Advanced Microsoft Excel</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            365 Data Science
+                        </div>
+                        <p class="certification-desc">Advanced Excel skills including complex formulas, pivot tables, data analysis, and visualization techniques.</p>
+                        <a href="images/excel.jpg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 4 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/sql.jpg" alt="Advanced SQL">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Advanced SQL</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            365 Data Science
+                        </div>
+                        <p class="certification-desc">Advanced SQL programming including complex queries, window functions, and database optimization techniques.</p>
+                        <a href="images/sql.jpg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 5 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/certificate.jpg" alt="Data Manipulation in SQL">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Data Manipulation in SQL</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            DataCamp
+                        </div>
+                        <p class="certification-desc">Skills in manipulating and transforming data using SQL queries for effective data analysis.</p>
+                        <a href="images/certificate.jpg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 6 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/Storytelling.jpg" alt="Data Storytelling Concepts">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Data Storytelling Concepts</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            DataCamp
+                        </div>
+                        <p class="certification-desc">Mastering the art of communicating data insights through effective storytelling techniques.</p>
+                        <a href="images/Storytelling.jpg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 7 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/soft.jpeg" alt="Professional Soft Skills">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Professional Soft Skills Learning Pathway</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            LinkedIn
+                        </div>
+                        <p class="certification-desc">Development of essential soft skills including communication, teamwork, and problem-solving.</p>
+                        <a href="images/soft.jpeg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 8 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/power.jpg" alt="Power BI">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Power BI</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            365 Data Science
+                        </div>
+                        <p class="certification-desc">Data visualization and business intelligence skills using Microsoft Power BI for creating interactive dashboards.</p>
+                        <a href="images/power.jpg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Certification 9 -->
+                <div class="certification-card fade-in">
+                    <div class="certification-image">
+                        <img src="images/b.jpeg" alt="Business Analyst">
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">Se préparer au métier de business analyst</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-award"></i>
+                            Microsoft et LinkedIn
+                        </div>
+                        <p class="certification-desc">Preparation for the business analyst role covering requirements analysis, process modeling, and solution evaluation.</p>
+                        <a href="images/b.jpeg" class="certification-link" target="_blank">View Certificate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p>Also, you can find me here:</p>
+            <div class="social-links">
+                <a href="https://www.reddit.com/user/Mady7153/" target="_blank"><i class="fab fa-reddit"></i></a>
+                <a href="https://medium.com/@makhloufimahdi777" target="_blank"><i class="fab fa-medium"></i></a>
+            </div>
+            <p>© All rights Reserved MAKHLOUFI MAHDI</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const elementInView = (el, scrollOffset = 0) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight || document.documentElement.clientHeight) - scrollOffset)
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('visible');
+        };
+        
+        const handleScrollAnimation = () => {
+            fadeElements.forEach((el) => {
+                if (elementInView(el, 100)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+        
+        // Initial check on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScrollAnimation();
+            
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
