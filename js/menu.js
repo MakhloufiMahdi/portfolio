@@ -8,11 +8,12 @@ if (menuBtn) {
     });
 }
 
-// Close mobile menu when clicking on a link
+
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
         }
     });
+
 });
